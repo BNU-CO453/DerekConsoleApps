@@ -6,7 +6,7 @@ namespace ConsoleAppProject.App01
     /// Please describe the main features of this App
     /// </summary>
     /// <author>
-    /// Student Name version 0.1
+    /// Derek version 1.0
     /// </author>
     public class DistanceConverter
     {
