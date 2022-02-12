@@ -17,7 +17,7 @@ namespace ConsoleAppProject.App01
         private string number;
 
         /// <summary>
-        /// This method will output a heading, ask dfor the
+        /// This method will output a heading, ask for the
         /// input for miles, calculate and output the same
         /// distance in feet.
         /// </summary>
