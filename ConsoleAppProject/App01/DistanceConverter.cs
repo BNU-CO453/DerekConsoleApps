@@ -41,9 +41,12 @@ namespace ConsoleAppProject.App01
             Console.WriteLine();
         }
 
-        private void OutputFeet()
+        private void InputMiles()
         {
-            Console.WriteLine(" " + miles + " miles = " + feet + " feet!");
+            Console.Write(" Please input the distance in miles > ");
+
+            string number = Console.ReadLine();
+            miles = Convert.ToDouble(number);
         }
 
         private void CalculateFeet()
@@ -51,12 +54,9 @@ namespace ConsoleAppProject.App01
             feet = miles * FEET_IN_MILES;
         }
 
-        private void InputMiles()
+        private void OutputFeet()
         {
-            Console.Write(" Please input the distance in miles > ");
-
-            string number = Console.ReadLine();
-            miles = Convert.ToDouble(number);
+            Console.WriteLine(" " + miles + " miles = " + feet + " feet!");
         }
     }
 }
