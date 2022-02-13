@@ -14,10 +14,9 @@ namespace ConsoleAppProject.App01
 
         private double miles;
         private double feet;
-        private string number;
 
         /// <summary>
-        /// This method will output a heading, ask for the
+        /// This method will output a heading, ask  for the
         /// input for miles, calculate and output the same
         /// distance in feet.
         /// </summary>
@@ -56,7 +55,7 @@ namespace ConsoleAppProject.App01
         {
             Console.Write(" Please input the distance in miles > ");
 
-            number = Console.ReadLine();
+            string number = Console.ReadLine();
             miles = Convert.ToDouble(number);
         }
     }
