@@ -1,7 +1,7 @@
-﻿using System;
+﻿using ConsoleAppProject.Helpers;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using ConsoleAppProject.Helpers;
 
 namespace ConsoleAppProject.App03
 {
