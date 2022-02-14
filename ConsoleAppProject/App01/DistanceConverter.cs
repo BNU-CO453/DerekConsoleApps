@@ -11,6 +11,7 @@ namespace ConsoleAppProject.App01
     public class DistanceConverter
     {
         public const int FEET_IN_MILES = 5280;
+        public const double METRES_IN_MILES = 1602.34;
         
         private double toDistance;
         private double fromDistance;
@@ -35,7 +36,7 @@ namespace ConsoleAppProject.App01
 
         public void ConvertMilesToFeet()
         {
-            
+            fromDistance = InputDistance(DistanceUnits.Miles);
         }
         private static void OutputHeading()
         {
