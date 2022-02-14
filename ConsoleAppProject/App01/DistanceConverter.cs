@@ -11,9 +11,9 @@ namespace ConsoleAppProject.App01
     public class DistanceConverter
     {
         public const int FEET_IN_MILES = 5280;
-
-        private double miles;
-        private double feet;
+        
+        private double toDistance;
+        private double fromDistance;
 
         /// <summary>
         /// This method will output a heading, ask  for the
@@ -23,12 +23,20 @@ namespace ConsoleAppProject.App01
         public void Run()
         {
             OutputHeading();
-
-            InputMiles();
-            CalculateFeet();
-            OutputFeet();
+            
+            ConvertFeetToMiles();
+            ConvertMilesToFeet();
         }
 
+        public void ConvertFeetToMiles()
+        {
+            fromDistance = InputDistance(DistanceUnits.Feet);
+        }
+
+        public void ConvertMilesToFeet()
+        {
+            
+        }
         private static void OutputHeading()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -41,22 +49,22 @@ namespace ConsoleAppProject.App01
             Console.WriteLine();
         }
 
-        private void InputMiles()
+        private double InputDistance(DistanceUnits unit)
         {
-            Console.Write(" Please input the distance in miles > ");
+            Console.Write($" Please input the distance in {unit} > ");
 
             string number = Console.ReadLine();
-            miles = Convert.ToDouble(number);
+            return Convert.ToDouble(number);            
         }
-
+        
         private void CalculateFeet()
         {
-            feet = miles * FEET_IN_MILES;
+            //feet = miles * FEET_IN_MILES;
         }
 
-        private void OutputFeet()
+        private void OutputDistance()
         {
-            Console.WriteLine(" " + miles + " miles = " + feet + " feet!");
+           // Console.WriteLine(" " + miles + " miles = " + feet + " feet!");
         }
     }
 }

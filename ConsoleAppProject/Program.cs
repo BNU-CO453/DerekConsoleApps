@@ -24,7 +24,7 @@ namespace ConsoleAppProject
             Console.WriteLine();
 
             DistanceConverter app01 = new DistanceConverter();
-            app01.Run();
+            app01.ConvertFeetToMiles();
 
             Console.ForegroundColor = ConsoleColor.Black;
         }
