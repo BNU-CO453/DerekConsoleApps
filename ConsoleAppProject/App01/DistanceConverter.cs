@@ -52,8 +52,7 @@ namespace ConsoleAppProject.App01
             Console.Write(" Please enter coice > ");
 
             string choice = Console.ReadLine();
-            Console.WriteLine(
-                );
+            Console.WriteLine();
 
             if (choice == "1")
             {
