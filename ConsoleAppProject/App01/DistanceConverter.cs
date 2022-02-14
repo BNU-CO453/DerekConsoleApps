@@ -6,15 +6,18 @@ namespace ConsoleAppProject.App01
     /// Please describe the main features of this App
     /// </summary>
     /// <author>
-    /// Student Name version 0.1
+    /// Derek Peacock version 1.0
     /// </author>
     public class DistanceConverter
     {
         public const int FEET_IN_MILES = 5280;
 
-        private double miles;
-        private double feet;
-        private string number;
+        private double fromDistance;
+        private double toDistance;
+
+        private string fromUnit;
+        private string toUnit;
+
 
         /// <summary>
         /// This method will output a heading, ask dfor the
@@ -25,9 +28,34 @@ namespace ConsoleAppProject.App01
         {
             OutputHeading();
 
-            InputMiles();
-            CalculateFeet();
-            OutputFeet();
+            fromUnit = SelectUnit();
+            toUnit = SelectUnit();
+
+            fromDistance = InputDistance($"Please enter the distance in {fromUnit} > ");
+
+            //CalculateFeet();
+
+            OutputDistance();
+        }
+
+        private string SelectUnit()
+        {
+            Console.WriteLine("Please select your unit\n");
+            Console.WriteLine("1. Miles");
+            Console.WriteLine("2. Feet");
+            Console.WriteLine("3. Metres");
+
+            string choice = Console.ReadLine();
+
+            if (choice == "1")
+            {
+                return "Miles";
+            }
+            else if (choice == "2")
+            {
+                return "Feet";
+            }
+            else return "NULL";
         }
 
         private static void OutputHeading()
@@ -42,22 +70,21 @@ namespace ConsoleAppProject.App01
             Console.WriteLine();
         }
 
-        private void OutputFeet()
+        private void OutputDistance()
         {
-            Console.WriteLine(" " + miles + " miles = " + feet + " feet!");
+            Console.WriteLine($" {fromDistance} {fromUnit} = {toDistance}  {toUnit}!");
         }
 
         private void CalculateFeet()
         {
-            feet = miles * FEET_IN_MILES;
+            //feet = miles * FEET_IN_MILES;
         }
 
-        private void InputMiles()
+        private double InputDistance(string prompt)
         {
-            Console.Write(" Please input the distance in miles > ");
-
-            number = Console.ReadLine();
-            miles = Convert.ToDouble(number);
+            Console.WriteLine(prompt);
+            string number = Console.ReadLine();
+            return Convert.ToDouble(number);
         }
 
     }
