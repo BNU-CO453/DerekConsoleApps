@@ -28,11 +28,8 @@ namespace ConsoleAppProject.App01
         {
             OutputHeading();
 
-            Console.WriteLine(" Please select your from unit\n");
-            fromUnit = SelectUnit();
-
-            Console.WriteLine("\n Please select your to unit\n");
-            toUnit = SelectUnit();
+            fromUnit = SelectUnit(" Please select your from unit");
+            toUnit = SelectUnit("\n Please select your to unit");
 
             fromDistance = InputDistance($" Please enter the distance in {fromUnit} > ");
 
@@ -41,8 +38,11 @@ namespace ConsoleAppProject.App01
             OutputDistance();
         }
 
-        private DistanceUnits SelectUnit()
+        private DistanceUnits SelectUnit(string prompt)
         {
+            Console.WriteLine(prompt);
+            Console.WriteLine();
+
             Console.WriteLine($" 1. {DistanceUnits.Miles}");
             Console.WriteLine($" 2. {DistanceUnits.Feet}");
             Console.WriteLine($" 3. {DistanceUnits.Metres}");
