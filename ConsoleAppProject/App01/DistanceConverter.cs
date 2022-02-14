@@ -6,11 +6,12 @@ namespace ConsoleAppProject.App01
     /// Please describe the main features of this App
     /// </summary>
     /// <author>
-    /// Derek Peacock version 1.0
+    /// Derek Peacock version 2.0
     /// </author>
     public class DistanceConverter
     {
         public const int FEET_IN_MILES = 5280;
+        public const double METRES_IN_MILES = 6200;
 
         private double fromDistance;
         private double toDistance;
@@ -95,6 +96,11 @@ namespace ConsoleAppProject.App01
                      toUnit == DistanceUnits.Miles)
             {
                 toDistance = fromDistance / FEET_IN_MILES;
+            }
+            else if (fromUnit == DistanceUnits.Metres &&
+                      toUnit == DistanceUnits.Miles)
+            {
+                toDistance = fromDistance * METRES_IN_MILES;
             }
         }
 
