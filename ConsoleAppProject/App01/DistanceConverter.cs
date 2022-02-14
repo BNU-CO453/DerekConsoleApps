@@ -3,7 +3,7 @@
 namespace ConsoleAppProject.App01
 {
     /// <summary>
-    /// Please describe the main features of this App
+    /// Please describe the main features of this App01 here
     /// </summary>
     /// <author>
     /// Derek Peacock version 2.0
@@ -30,7 +30,7 @@ namespace ConsoleAppProject.App01
             OutputHeading();
 
             fromUnit = SelectUnit(" Please select your from unit");
-            toUnit = SelectUnit("\n Please select your to unit");
+            toUnit = SelectUnit(" Please select your to unit");
 
             fromDistance = InputDistance($" Please enter the distance in {fromUnit} > ");
 
@@ -52,6 +52,8 @@ namespace ConsoleAppProject.App01
             Console.Write(" Please enter coice > ");
 
             string choice = Console.ReadLine();
+            Console.WriteLine(
+                );
 
             if (choice == "1")
             {
