@@ -27,8 +27,15 @@ namespace ConsoleAppProject.App01
             InputFromUnit();
             InputToUnit();
 
-            Console.WriteLine("fromUnit is " + fromUnit);
-            Console.WriteLine("toUnit is " + toUnit);
+            //Console.WriteLine("fromUnit is " + fromUnit);
+            //Console.WriteLine("toUnit is " + toUnit);
+
+            InputFromDistance();
+
+            Calculate();
+
+            Output();
+
 
             //InputMiles();
             //CalculateFeet();
@@ -90,6 +97,11 @@ namespace ConsoleAppProject.App01
             Console.Write("  Please enter your distance as miles > ");
             string value = Console.ReadLine();
             miles = Convert.ToDouble(value);
+        }
+
+        private void Output()
+        {
+            Console.WriteLine(fromDistance + " " + fromUnit + " is " + toDistance + " " + toUnit);
         }
 
         private void OutputHeading()
