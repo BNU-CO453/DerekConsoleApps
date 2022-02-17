@@ -69,7 +69,10 @@ namespace ConsoleAppProject.App01
 
         private void Calculate()
         {
-
+            if(fromUnit.Contains("Miles") && toUnit.Contains("Feet"))
+            {
+                toDistance = fromDistance * 5280;
+            }
         }
 
         private void CalculateFeet()
