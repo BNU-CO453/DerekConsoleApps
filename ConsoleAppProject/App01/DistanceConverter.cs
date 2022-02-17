@@ -51,7 +51,7 @@ namespace ConsoleAppProject.App01
         {
             Console.WriteLine("  ==============================");
             Console.WriteLine("      App01: Distance Converter ");
-            Console.WriteLine("           by Derek Peacock     ");
+            Console.WriteLine("           by Nick Day     ");
             Console.WriteLine("  ==============================");
         }
     }
