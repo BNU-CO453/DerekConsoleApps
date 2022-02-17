@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleAppProject.Helpers;
 
 namespace ConsoleAppProject.App01
 {
@@ -10,25 +11,35 @@ namespace ConsoleAppProject.App01
     /// </author>
     public class DistanceConverter
     {
-        private double miles;
-
-        private double feet;
-
         private string fromUnit;
         private string toUnit;
 
         private double fromDistance;
         private double toDistance;
 
+        private const int MAX_UNITS = 3;
+
+        private string[] units = new string[MAX_UNITS];
+
+        private const string FEET = "FEET";
+        private const string MILES = "MILES";
+        private const string METERS = "METERS";
+
+        private void InitialiseUnitArray()
+        {
+            units[0] = FEET;
+            units[1] = MILES;
+            units[2] = METERS;
+        }
+
         public void Run()
         {
             OutputHeading();
 
-            InputFromUnit();
-            InputToUnit();
+            InitialiseUnitArray();
 
-            //Console.WriteLine("fromUnit is " + fromUnit);
-            //Console.WriteLine("toUnit is " + toUnit);
+            fromUnit = Input("FROM");
+            toUnit = Input("TO");
 
             InputFromDistance();
 
@@ -36,28 +47,19 @@ namespace ConsoleAppProject.App01
 
             Output();
 
-
-            //InputMiles();
-            //CalculateFeet();
-            //OutputFeet();
         }
 
-        private void InputFromUnit()
+        private string Input(string unit)
         {
-            Console.WriteLine("Please choose one of the following units to convert FROM: ");
-            Console.WriteLine("1. Feet");
-            Console.WriteLine("2. Miles");
-            Console.WriteLine("3. Meters");
-            fromUnit = Console.ReadLine();
-        }
+            Console.WriteLine("Please choose one of the following units to convert " + unit);
+            int option = ConsoleHelper.SelectChoice(units);
 
-        private void InputToUnit()
-        {
-            Console.WriteLine("Please choose one of the following units to convert TO: ");
-            Console.WriteLine("1. Feet");
-            Console.WriteLine("2. Miles");
-            Console.WriteLine("3. Meters");
-            toUnit = Console.ReadLine();
+            if (option == 1)
+                return FEET;
+            else if (option == 2)
+                return MILES;
+            else
+                return METERS;
         }
 
         private void InputFromDistance()
@@ -67,37 +69,21 @@ namespace ConsoleAppProject.App01
         }
 
 
-        private void OutputFeet()
-        {
-            Console.WriteLine();
-            Console.WriteLine("  " + miles + " miles is " + feet + " feet");
-            Console.WriteLine();
-        }
 
         private void Calculate()
         {
-            if(fromUnit.Contains("Miles") && toUnit.Contains("Feet"))
+            if(fromUnit.Contains(MILES) && toUnit.Contains(FEET))
             {
                 toDistance = fromDistance * 5280;
             }
         }
 
-        private void CalculateFeet()
-        {
-            feet = miles * 5280;
-        }
 
         /// <summary>
         /// Output a message to the user to enter the miles
         /// and then read it in as a string and convert it tp a double
         /// </summary>
-        private void InputMiles()
-        {
-            Console.WriteLine();
-            Console.Write("  Please enter your distance as miles > ");
-            string value = Console.ReadLine();
-            miles = Convert.ToDouble(value);
-        }
+
 
         private void Output()
         {
