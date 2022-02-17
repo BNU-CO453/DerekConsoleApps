@@ -14,14 +14,43 @@ namespace ConsoleAppProject.App01
 
         private double feet;
 
+        private string fromUnit;
+        private string toUnit;
+
         public void Run()
         {
             OutputHeading();
 
-            InputMiles();
-            CalculateFeet();
-            OutputFeet();
+            InputFromUnit();
+            InputToUnit();
+
+            Console.WriteLine("fromUnit is " + fromUnit);
+            Console.WriteLine("toUnit is " + toUnit);
+
+            //InputMiles();
+            //CalculateFeet();
+            //OutputFeet();
         }
+
+        private void InputFromUnit()
+        {
+            Console.WriteLine("Please choose one of the following units to convert FROM: ");
+            Console.WriteLine("1. Feet");
+            Console.WriteLine("2. Miles");
+            Console.WriteLine("3. Meters");
+            fromUnit = Console.ReadLine();
+        }
+
+        private void InputToUnit()
+        {
+            Console.WriteLine("Please choose one of the following units to convert TO: ");
+            Console.WriteLine("1. Feet");
+            Console.WriteLine("2. Miles");
+            Console.WriteLine("3. Meters");
+            toUnit = Console.ReadLine();
+        }
+
+
 
         private void OutputFeet()
         {
