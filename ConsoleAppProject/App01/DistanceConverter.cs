@@ -12,7 +12,18 @@ namespace ConsoleAppProject.App01
     {
         public const int FEET_IN_MILES = 5280;
         public const double METRES_IN_MILES = 1602.34;
-        
+
+        // Using Strings for units
+
+        public const string FEET = "Feet";
+        public const string METRES = "Metres";
+        public const string MILES = "Miles";
+
+        // Using Enumeration for units
+
+        private DistanceUnits fromUnit;
+        private DistanceUnits toUnit;
+
         private double toDistance;
         private double fromDistance;
 
@@ -20,23 +31,41 @@ namespace ConsoleAppProject.App01
         /// This method will output a heading, ask  for the
         /// input for miles, calculate and output the same
         /// distance in feet.
+        /// 
+        /// Derek Peacock Version 2.0
         /// </summary>
         public void Run()
         {
             OutputHeading();
-            
-            ConvertFeetToMiles();
-            ConvertMilesToFeet();
+
+            fromUnit = SelectUnit(" Please select your from unit");
+            toUnit = SelectUnit(" Please select your to unit");
+
+            Console.WriteLine($" \n You are converting from {fromUnit} to {toUnit} \n");
+
+            fromDistance = InputDistance(fromUnit);
+
+            ConvertDistance();
+
+            OutputDistance();
         }
 
-        public void ConvertFeetToMiles()
+        private double InputDistance(DistanceUnits unit)
         {
-            fromDistance = InputDistance(DistanceUnits.Feet);
+            Console.WriteLine();
+            Console.Write($" Please input the distance in {unit} > ");
+
+            string number = Console.ReadLine();
+            return Convert.ToDouble(number);
         }
 
-        public void ConvertMilesToFeet()
+        private double InputDistance(string unit)
         {
-            fromDistance = InputDistance(DistanceUnits.Miles);
+            Console.WriteLine();
+            Console.Write($" Please input the distance in {unit} > ");
+
+            string number = Console.ReadLine();
+            return Convert.ToDouble(number);
         }
         private static void OutputHeading()
         {
@@ -48,25 +77,6 @@ namespace ConsoleAppProject.App01
             Console.WriteLine("            by Derek           ");
             Console.WriteLine(" ==============================");
             Console.WriteLine();
-        }
-
-        private double InputDistance(DistanceUnits unit)
-        {
-            Console.WriteLine();
-            Console.Write($" Please input the distance in {unit} > ");
-
-            string number = Console.ReadLine();
-            return Convert.ToDouble(number);            
-        }
-        
-        private void CalculateFeet()
-        {
-            //feet = miles * FEET_IN_MILES;
-        }
-
-        private void OutputDistance()
-        {
-           // Console.WriteLine(" " + miles + " miles = " + feet + " feet!");
         }
     }
 }
