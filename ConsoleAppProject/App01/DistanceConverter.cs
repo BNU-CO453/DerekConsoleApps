@@ -67,6 +67,62 @@ namespace ConsoleAppProject.App01
             string number = Console.ReadLine();
             return Convert.ToDouble(number);
         }
+
+        private DistanceUnits SelectUnit(string prompt)
+        {
+            Console.WriteLine(prompt);
+            Console.WriteLine();
+
+            Console.WriteLine($" 1. {DistanceUnits.Miles}");
+            Console.WriteLine($" 2. {DistanceUnits.Feet}");
+            Console.WriteLine($" 3. {DistanceUnits.Metres}");
+
+            Console.WriteLine();
+            Console.Write(" Please enter coice > ");
+
+            string choice = Console.ReadLine();
+            Console.WriteLine();
+
+            if (choice == "1")
+            {
+                return DistanceUnits.Miles;
+            }
+            else if (choice == "2")
+            {
+                return DistanceUnits.Feet;
+            }
+            else if (choice == "3")
+            {
+                return DistanceUnits.Metres;
+            }
+            else return DistanceUnits.NoUnit;
+        }
+
+        private void OutputDistance()
+        {
+            Console.WriteLine();
+            Console.WriteLine($" {fromDistance} {fromUnit} = {toDistance}  {toUnit}!");
+            Console.WriteLine();
+        }
+
+        private void ConvertDistance()
+        {
+            if (fromUnit == DistanceUnits.Miles &&
+               toUnit == DistanceUnits.Feet)
+            {
+                toDistance = fromDistance * FEET_IN_MILES;
+            }
+            else if (fromUnit == DistanceUnits.Feet &&
+                     toUnit == DistanceUnits.Miles)
+            {
+                toDistance = fromDistance / FEET_IN_MILES;
+            }
+            else if (fromUnit == DistanceUnits.Metres &&
+                      toUnit == DistanceUnits.Miles)
+            {
+                toDistance = fromDistance * METRES_IN_MILES;
+            }
+        }
         private static void OutputHeading()
         {
             Console.ForegroundColor = ConsoleColor.Green;
