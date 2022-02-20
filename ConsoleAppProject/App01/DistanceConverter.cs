@@ -3,10 +3,10 @@
 namespace ConsoleAppProject.App01
 {
     /// <summary>
-    /// Please describe the main features of this App
+    /// Please describe the main features of this App here!
     /// </summary>
     /// <author>
-    /// Derek version 1.0
+    /// Derek version 2.0
     /// </author>
     public class DistanceConverter
     {
@@ -29,10 +29,9 @@ namespace ConsoleAppProject.App01
 
         /// <summary>
         /// This method will output a heading, ask  for the
-        /// input for miles, calculate and output the same
-        /// distance in feet.
-        /// 
-        /// Derek Peacock Version 2.0
+        /// the choice of from unit, then ask for the choice
+        /// of to unit then input the from distance 
+        /// calculate and output the to distance
         /// </summary>
         public void Run()
         {
@@ -108,17 +107,17 @@ namespace ConsoleAppProject.App01
         private void ConvertDistance()
         {
             if (fromUnit == DistanceUnits.Miles &&
-               toUnit == DistanceUnits.Feet)
+                  toUnit == DistanceUnits.Feet)
             {
                 toDistance = fromDistance * FEET_IN_MILES;
             }
             else if (fromUnit == DistanceUnits.Feet &&
-                     toUnit == DistanceUnits.Miles)
+                       toUnit == DistanceUnits.Miles)
             {
                 toDistance = fromDistance / FEET_IN_MILES;
             }
             else if (fromUnit == DistanceUnits.Metres &&
-                      toUnit == DistanceUnits.Miles)
+                       toUnit == DistanceUnits.Miles)
             {
                 toDistance = fromDistance * METRES_IN_MILES;
             }
