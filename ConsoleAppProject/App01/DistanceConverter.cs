@@ -52,6 +52,7 @@ namespace ConsoleAppProject.App01
 
         private double InputDistance(DistanceUnits unit)
         {
+            Console.WriteLine();
             Console.Write($" Please input the distance in {unit} > ");
 
             string number = Console.ReadLine();
