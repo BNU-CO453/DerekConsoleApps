@@ -82,6 +82,11 @@ namespace ConsoleAppProject.App01
             string choice = Console.ReadLine();
             Console.WriteLine();
 
+            return ExecuteChoice(choice);
+        }
+
+        private static DistanceUnits ExecuteChoice(string choice)
+        {
             if (choice == "1")
             {
                 return DistanceUnits.Miles;
