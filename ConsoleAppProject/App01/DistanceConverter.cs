@@ -50,8 +50,6 @@ namespace ConsoleAppProject.App01
             OutputDistance();
         }
 
-
-
         private DistanceUnits SelectUnit(string prompt)
         {
             string[] choices =
