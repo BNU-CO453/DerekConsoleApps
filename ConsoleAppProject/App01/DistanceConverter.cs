@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleAppProject.Helpers;
+using System;
 
 namespace ConsoleAppProject.App01
 {
@@ -12,6 +13,8 @@ namespace ConsoleAppProject.App01
     {
         public const int FEET_IN_MILES = 5280;
         public const double METRES_IN_MILES = 1609.34;
+
+        public const string FEET = "Feet";
 
         private double fromDistance;
         private double toDistance;
@@ -34,7 +37,7 @@ namespace ConsoleAppProject.App01
             
             Console.WriteLine($" \n You are converting from {fromUnit} to {toUnit} \n");
 
-            fromDistance = InputDistance($" Please enter the distance in {fromUnit} > ");
+            fromDistance = ConsoleHelper.InputNumber($" Please enter the distance in {fromUnit} > ");
 
             ConvertDistance();
 
@@ -107,15 +110,7 @@ namespace ConsoleAppProject.App01
             }
         }
 
-        private double InputDistance(string prompt)
-        {
-            Console.WriteLine();
-            Console.Write(prompt);
-            string number = Console.ReadLine();
-            Console.WriteLine();
-
-            return Convert.ToDouble(number);
-        }
+  
 
     }
 }
