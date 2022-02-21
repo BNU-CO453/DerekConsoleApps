@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleAppProject.Helpers;
+using System;
 
 namespace ConsoleAppProject.App01
 {
@@ -35,71 +36,48 @@ namespace ConsoleAppProject.App01
         /// </summary>
         public void Run()
         {
-            OutputHeading();
+            ConsoleHelper.OutputHeading("App01 Distance Converter");
 
             fromUnit = SelectUnit(" Please select your from unit");
             toUnit = SelectUnit(" Please select your to unit");
 
             Console.WriteLine($" \n You are converting from {fromUnit} to {toUnit} \n");
 
-            fromDistance = InputDistance(fromUnit);
+            fromDistance = ConsoleHelper.InputNumber($" Please input the distance in {fromUnit} > ");
 
             ConvertDistance();
 
             OutputDistance();
         }
 
-        private double InputDistance(DistanceUnits unit)
-        {
-            Console.WriteLine();
-            Console.Write($" Please input the distance in {unit} > ");
 
-            string number = Console.ReadLine();
-            return Convert.ToDouble(number);
-        }
-
-        private double InputDistance(string unit)
-        {
-            Console.WriteLine();
-            Console.Write($" Please input the distance in {unit} > ");
-
-            string number = Console.ReadLine();
-            return Convert.ToDouble(number);
-        }
 
         private DistanceUnits SelectUnit(string prompt)
         {
+            string[] choices =
+                {
+                    $" 1. {DistanceUnits.Miles}",
+                    $" 2. {DistanceUnits.Feet}",
+                    $" 3. {DistanceUnits.Metres}"
+                };
+
             Console.WriteLine(prompt);
             Console.WriteLine();
-
-            Console.WriteLine($" 1. {DistanceUnits.Miles}");
-            Console.WriteLine($" 2. {DistanceUnits.Feet}");
-            Console.WriteLine($" 3. {DistanceUnits.Metres}");
-
-            Console.WriteLine();
-            Console.Write(" Please enter coice > ");
-
-            string choice = Console.ReadLine();
-            Console.WriteLine();
+            int choice = ConsoleHelper.SelectChoice(choices);
 
             return ExecuteChoice(choice);
         }
 
-        private static DistanceUnits ExecuteChoice(string choice)
+        private static DistanceUnits ExecuteChoice(int choice)
         {
-            if (choice == "1")
+            switch(choice)
             {
-                return DistanceUnits.Miles;
+                case 1: return DistanceUnits.Miles;break;
+                case 2: return DistanceUnits.Feet; break;
+                case 3: return DistanceUnits.Metres;break;
+
+                default: return DistanceUnits.NoUnit;
             }
-            else if (choice == "2")
-            {
-                return DistanceUnits.Feet;
-            }
-            else if (choice == "3")
-            {
-                return DistanceUnits.Metres;
-            }
-            else return DistanceUnits.NoUnit;
         }
 
         private void OutputDistance()
@@ -126,17 +104,6 @@ namespace ConsoleAppProject.App01
             {
                 toDistance = fromDistance * METRES_IN_MILES;
             }
-        }
-        private static void OutputHeading()
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-
-            Console.WriteLine();
-            Console.WriteLine(" ==============================");
-            Console.WriteLine("    App01 Distance Converter   ");
-            Console.WriteLine("            by Derek           ");
-            Console.WriteLine(" ==============================");
-            Console.WriteLine();
         }
     }
 }
