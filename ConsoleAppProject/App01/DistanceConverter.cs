@@ -30,7 +30,7 @@ namespace ConsoleAppProject.App01
         /// </summary>
         public void Run()
         {
-            OutputHeading();
+            ConsoleHelper.OutputHeading("App01 Distance Converter", "Sue Jeffries");
 
             fromUnit = SelectUnit(" Please select your from unit");
             toUnit = SelectUnit(" Please select your to unit");
@@ -46,47 +46,33 @@ namespace ConsoleAppProject.App01
 
         private DistanceUnits SelectUnit(string prompt)
         {
-            Console.WriteLine(prompt);
-            Console.WriteLine();
+            string[] choices = 
+                { 
+                    $"{DistanceUnits.Miles}",
+                    $"{DistanceUnits.Feet}",
+                    $"{DistanceUnits.Metres}"
+                };
 
-            Console.WriteLine($" 1. {DistanceUnits.Miles}");
-            Console.WriteLine($" 2. {DistanceUnits.Feet}");
-            Console.WriteLine($" 3. {DistanceUnits.Metres}");
+            Console.WriteLine($"\n{prompt}\n");
 
-            Console.WriteLine();
-            Console.Write(" Please enter coice > ");
+            int choice = ConsoleHelper.SelectChoice(choices);
 
-            string choice = Console.ReadLine();
-            Console.WriteLine();
-
-            if (choice == "1")
+            if (choice == 1)
             {
                 return DistanceUnits.Miles;
             }
-            else if (choice == "2")
+            else if (choice == 2)
             {
                 return DistanceUnits.Feet;
             }
-            else if (choice == "3")
+            else if (choice == 3)
             {
                 return DistanceUnits.Metres;
             }
             else return DistanceUnits.NoUnit;
         }
 
-        private static void OutputHeading()
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-
-            Console.WriteLine();
-            Console.WriteLine(" ==============================");
-            Console.WriteLine("    App01 Distance Converter   ");
-            Console.WriteLine("            by Derek           ");
-            Console.WriteLine(" ==============================");
-            Console.WriteLine();
-        }
-
-        private void OutputDistance()
+         private void OutputDistance()
         {
             Console.WriteLine($" {fromDistance} {fromUnit} = {toDistance}  {toUnit}!");
         }
