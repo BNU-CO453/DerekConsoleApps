@@ -11,27 +11,26 @@ namespace ConsoleAppProject.App01
     /// </author>
     public class DistanceConverter
     {
-        private const int METERS_AND_
+        private const int METERS_AND_FEET = 5280;
+        private const double MILES_AND_METRES = 1609.34;
+        private const double FEET_AND_METRES = 3.280839895;
 
-        private DistanceUnits fromUnit;
-        private DistanceUnits toUnit;
 
-        private double fromDistance;
-        private double toDistance;
+        public DistanceUnits fromUnit { get; set; }
+        public DistanceUnits toUnit { get; set; }
+
+        public double fromDistance { get; set; }
+        public double toDistance { get; set; }
 
         private const int MAX_UNITS = 3;
 
         private string[] units = new string[MAX_UNITS];
 
-        private const string FEET = "FEET";
-        private const string MILES = "MILES";
-        private const string METERS = "METERS";
-
-        private void InitialiseUnitArray()
+        public void InitialiseUnitArray()
         {
-            units[0] = FEET;
-            units[1] = MILES;
-            units[2] = METERS;
+            units[0] = DistanceUnits.Feet.ToString();
+            units[1] = DistanceUnits.Miles.ToString();
+            units[2] = DistanceUnits.Metres.ToString();
         }
 
         public void Run()
@@ -50,7 +49,7 @@ namespace ConsoleAppProject.App01
 
         }
 
-        private DistanceUnits Input(string unit)
+        public DistanceUnits Input(string unit)
         {
             Console.WriteLine("Please choose one of the following units to convert " + unit);
             int option = ConsoleHelper.SelectChoice(units);
@@ -59,11 +58,13 @@ namespace ConsoleAppProject.App01
                 return DistanceUnits.Feet;
             else if (option == 2)
                 return DistanceUnits.Miles;
-            else 
+            else if (option == 3)
                 return DistanceUnits.Metres;
+            else
+                return DistanceUnits.NoUnit;
         }
 
-        private void InputFromDistance()
+        public void InputFromDistance()
         {
             Console.WriteLine("Please enter the number of " + fromUnit);
             fromDistance = Convert.ToDouble(Console.ReadLine());
@@ -71,11 +72,31 @@ namespace ConsoleAppProject.App01
 
 
 
-        private void Calculate()
+        public void Calculate()
         {
             if(fromUnit == DistanceUnits.Miles && toUnit == DistanceUnits.Feet)
             {
-                toDistance = fromDistance * 5280;
+                toDistance = fromDistance * METERS_AND_FEET;
+            }
+            else if (fromUnit == DistanceUnits.Feet && toUnit == DistanceUnits.Miles)
+            {
+                toDistance = fromDistance / METERS_AND_FEET;
+            }
+            else if (fromUnit == DistanceUnits.Miles && toUnit == DistanceUnits.Metres)
+            {
+                toDistance = fromDistance * MILES_AND_METRES;
+            }
+            else if (fromUnit == DistanceUnits.Metres && toUnit == DistanceUnits.Miles)
+            {
+                toDistance = fromDistance / MILES_AND_METRES;
+            }
+            else if (fromUnit == DistanceUnits.Feet && toUnit == DistanceUnits.Metres)
+            {
+                toDistance = fromDistance / FEET_AND_METRES;
+            }
+            else if (fromUnit == DistanceUnits.Metres && toUnit == DistanceUnits.Feet)
+            {
+                toDistance = fromDistance * FEET_AND_METRES;
             }
         }
 
@@ -86,9 +107,10 @@ namespace ConsoleAppProject.App01
         /// </summary>
 
 
-        private void Output()
+        public void Output()
         {
-            Console.WriteLine(fromDistance + " " + fromUnit.ToString() + " is " + toDistance + " " + toUnit.ToString()); ;
+            Console.WriteLine(fromDistance + " " + fromUnit.ToString() + " is " 
+                + toDistance.ToString("0.00") + " " + toUnit.ToString());
         }
 
         private void OutputHeading()
