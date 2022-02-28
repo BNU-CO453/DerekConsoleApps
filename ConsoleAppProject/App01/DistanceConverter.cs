@@ -22,11 +22,13 @@ namespace ConsoleAppProject.App01
 
         // Using Enumeration for units
 
-        private DistanceUnits fromUnit;
-        private DistanceUnits toUnit;
+        public DistanceUnits fromUnit { get; set; }
+        
+        public DistanceUnits toUnit { get; set; }
 
-        private double toDistance;
-        private double fromDistance;
+        public double toDistance { get; set; }
+
+        public double fromDistance { get; set; }
 
         /// <summary>
         /// This method will output a heading, ask  for the
@@ -85,7 +87,7 @@ namespace ConsoleAppProject.App01
             Console.WriteLine();
         }
 
-        private void ConvertDistance()
+        public void ConvertDistance()
         {
             if (fromUnit == DistanceUnits.Miles &&
                   toUnit == DistanceUnits.Feet)

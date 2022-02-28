@@ -1,4 +1,5 @@
 ﻿using ConsoleAppProject.App01;
+using ConsoleAppProject.Helpers;
 using System;
 
 namespace ConsoleAppProject
@@ -23,8 +24,29 @@ namespace ConsoleAppProject
             Console.WriteLine(" ----------------------------------------------");
             Console.WriteLine();
 
-            DistanceConverter app01 = new DistanceConverter();
-            app01.Run();
+            string[] choices =
+            {
+                "App01 Distance Converter",
+                "App02 BMI Calculator"
+            };
+
+            Console.WriteLine("Please choose your App\n ");
+
+            int choice = ConsoleHelper.SelectChoice(choices);
+
+            switch (choice)
+            {
+                case 1:
+                    DistanceConverter app01 = new DistanceConverter();
+                    app01.Run();
+                    break;
+
+                case 2: break;
+
+                default:
+                    break;
+            }
+
 
             Console.ForegroundColor = ConsoleColor.Black;
         }
