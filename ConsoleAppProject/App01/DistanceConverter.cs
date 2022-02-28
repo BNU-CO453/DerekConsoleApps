@@ -16,6 +16,10 @@ namespace ConsoleAppProject.App01
 
         public const string FEET = "Feet";
 
+        public const string MILES = "Miles";
+
+        public const string METRES = "Metres";
+
         private double fromDistance;
         private double toDistance;
 
