@@ -1,0 +1,53 @@
+﻿@model ConsoleAppProject.App01.DistanceConverter
+@using ConsoleAppProject.App01
+@{
+    ViewData["Title"] = "DistanceConverter";
+}
+
+<form method="post">
+
+    <h1>DistanceConverter</h1>
+
+    <h4> Select FROM Unit</h4>
+    <p>
+        <select asp-for="@Model.fromUnit">
+            <option>@DistanceUnits.Metres</option>
+            <option>@DistanceUnits.Miles</option>
+            <option>@DistanceUnits.Feet</option>
+        </select>
+    </p>
+
+    <h4> Enter FROM Distance </h4>
+    <p>
+        <input type="text" asp-for="@Model.fromDistance" value="">
+    </p>
+    <h4> Select TO Unit </h4>
+    <p>
+        <select asp-for="@Model.toUnit">
+            <option>@DistanceUnits.Metres</option>
+            <option>@DistanceUnits.Miles</option>
+            <option>@DistanceUnits.Feet</option>
+        </select>
+    </p>
+
+    <p>
+        <button class="btn btn-success" type="submit">Calculate </button>
+    </p>
+
+    <p>
+        @if (Model.toDistance == 0)
+        {
+
+        }
+        else
+        {
+            <h4> TO Distance is: </h4>
+            <input type="text" asp-for="@Model.toDistance"
+                   value="@Model.toDistance" />
+        }
+    </p>
+
+</form>
+
+
+
