@@ -14,11 +14,11 @@ namespace ConsoleAppProject.App01
         
         private double feet;
 
-        private double toDistance;
-        private double fromDistance;
+        public double toDistance;
+        public double fromDistance;
 
-        private String toUnit;
-        private String fromUnit;
+        public DistanceUnits toUnit;
+        public DistanceUnits fromUnit;
 
         public DistanceConverter()
         {
@@ -52,20 +52,33 @@ namespace ConsoleAppProject.App01
         private void InputToUnit()
         {
             Console.WriteLine("Enter the toUnit: ");
-            Console.WriteLine("1. Feet");
+            Console.WriteLine("1. " + DistanceUnits.Feet.ToString());
             Console.WriteLine("2. Metres");
             Console.WriteLine("3. Miles");
             
-            toUnit = Console.ReadLine();
+            int choice = Convert.ToInt16(Console.ReadLine());
+            switch(choice)
+            {
+                case 1 : toUnit = DistanceUnits.Feet; break;
+                case 2: toUnit = DistanceUnits.Metres; break;
+                case 3: toUnit = DistanceUnits.Miles; break;
+                default : toUnit = DistanceUnits.NoUnit; break;
+            }
         }
         private void InputFromUnit()
         {
-            Console.WriteLine("Enter the fromUnit: ");
-            Console.WriteLine("1. Feet");
+            Console.WriteLine("1. " + DistanceUnits.Feet.ToString());
             Console.WriteLine("2. Metres");
             Console.WriteLine("3. Miles");
-            
-            fromUnit = Console.ReadLine();
+
+            int choice = Convert.ToInt16(Console.ReadLine());
+            switch (choice)
+            {
+                case 1: toUnit = DistanceUnits.Feet; break;
+                case 2: toUnit = DistanceUnits.Metres; break;
+                case 3: toUnit = DistanceUnits.Miles; break;
+                default: toUnit = DistanceUnits.NoUnit; break;
+            }
         }
 
         private void InputFromDistance()
@@ -77,7 +90,7 @@ namespace ConsoleAppProject.App01
 
         private void Output()
         {
-            Console.WriteLine(fromDistance + " " + fromUnit + " is " + toDistance.ToString("0.0000") + " " + toUnit);
+            Console.WriteLine(fromDistance + " " + fromUnit.ToString() + " is " + toDistance.ToString("0.0000") + " " + toUnit.ToString()) ;
         }
         private void OutputFeet()
         {
@@ -97,13 +110,16 @@ namespace ConsoleAppProject.App01
             feet = miles * 5280;
         }
 
-        private void CalcuateToDistance()
+        public void CalcuateToDistance()
         {
-            if(fromUnit.Contains("Miles",StringComparison.CurrentCultureIgnoreCase) 
-                    && toUnit.Contains("Feet"))
-                    {
-                        toDistance = fromDistance * 5280;
-                    }
+            if(fromUnit == DistanceUnits.Miles && toUnit == DistanceUnits.Feet)
+            {
+                toDistance = fromDistance * 5280;
+            }
+            if (fromUnit == DistanceUnits.Feet && toUnit == DistanceUnits.Miles)
+            {
+                toDistance = fromDistance / 5280;
+            }
         }
 
         /// <summary>
