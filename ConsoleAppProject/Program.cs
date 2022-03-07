@@ -1,4 +1,5 @@
 ﻿using ConsoleAppProject.App01;
+using ConsoleAppProject.App03;
 using ConsoleAppProject.Helpers;
 using System;
 
@@ -27,7 +28,8 @@ namespace ConsoleAppProject
             string[] choices =
             {
                 "App01 Distance Converter",
-                "App02 BMI Calculator"
+                "App02 BMI Calculator",
+                "App03 Student Grades"
             };
 
             Console.WriteLine("Please choose your App\n ");
@@ -42,6 +44,11 @@ namespace ConsoleAppProject
                     break;
 
                 case 2: break;
+
+                case 3:
+                    StudentGrades app03 = new StudentGrades();
+                    app03.Run();
+                    break;
 
                 default:
                     break;
