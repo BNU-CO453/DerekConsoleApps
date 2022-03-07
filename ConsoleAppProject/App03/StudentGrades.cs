@@ -11,6 +11,8 @@ namespace ConsoleAppProject.App03
     /// </summary>
     public class StudentGrades
     {
+        public const int MIN_FAIL = 0;
+        public const int MIN_D = 40;
         public string [] Students { get; set; }
 
         public int [] Marks { get; set; }
@@ -24,7 +26,7 @@ namespace ConsoleAppProject.App03
             ConsoleHelper.OutputHeading("App03 Student Marks");
 
             InputMarks();
-            ConvertToGrades();
+            //ConvertToGrades();
             OutputGrades();
         }
 
@@ -44,13 +46,18 @@ namespace ConsoleAppProject.App03
         {
             for(int i = 0; i < Marks.Length; i++)
             {
-                Console.WriteLine($"{Students[i]}  mark = {Marks[i]}" );
+                int mark = Marks[i];
+                Grades grade = ConvertToGrades(mark);
+                Console.WriteLine($"{Students[i]}  mark = {mark} Grade = {grade}" );
             }
         }
 
-        private void ConvertToGrades()
+        public Grades ConvertToGrades(int mark)
         {
-            throw new NotImplementedException();
+            if (mark >= 0 && mark <= MIN_D - 1)
+                return Grades.F;
+            
+            else return Grades.X;
         }
 
 
