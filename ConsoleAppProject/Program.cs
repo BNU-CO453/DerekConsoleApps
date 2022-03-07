@@ -1,4 +1,5 @@
 ﻿using ConsoleAppProject.App01;
+using ConsoleAppProject.App02;
 using ConsoleAppProject.App03;
 using ConsoleAppProject.Helpers;
 using System;
@@ -15,13 +16,6 @@ namespace ConsoleAppProject
     /// </summary>
     public static class Program
     {
-        public static DistanceConverter DistanceConverter
-        {
-            get => default;
-            set
-            {
-            }
-        }
 
         public static void Main(string[] args)
         {
@@ -31,8 +25,22 @@ namespace ConsoleAppProject
             Console.WriteLine(" BNU CO453 Applications Programming 2020-2021!");
             Console.WriteLine("----------------------------------------------\n");
 
-            DistanceConverter app01 = new DistanceConverter();
-            app01.Run();
+            string[] choices = { "App01", "App02", "App03" };
+
+            int choice = ConsoleHelper.SelectChoice(choices);
+
+            switch(choice)
+            {
+                case 1: DistanceConverter app01 = new DistanceConverter();
+                    app01.Run();break;
+
+                case 2: BMI calculator = new BMI(); calculator.Run();
+                    break;
+
+                case 3: StudentGrades grades = new StudentGrades();
+                    grades.Run();break;
+            }
+          
         }
     }
 }
