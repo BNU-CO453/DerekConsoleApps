@@ -8,36 +8,42 @@
     <h1>Distance Converter</h1>
     <h2>by Derek Peacock</h2>
 </header>
+
 <section>
-    <h3>Select Your Distance Units</h3>
-    <br/>
-    <form method="post">
-        <p>
-            <span>From Unit:</span>
-            <select asp-for="@Model.App01.fromUnit">
-                <option>@DistanceConverter.FEET</option>
-                <option>@DistanceConverter.METRES</option>
-                <option>@DistanceConverter.MILES</option>
-            </select>
 
-        </p>
+    <form class="form-group border-dark" method="post">
+
+        <h4>Select Your from distance unit</h4>
+        <br/>
         <p>
-            <span>To Unit:</span>
-            <select asp-for="@Model.App01.toUnit">
+            <select asp-for="App01.fromUnit">
+                <option disabled selected>Choose</option>
                 <option>@DistanceConverter.FEET</option>
                 <option>@DistanceConverter.METRES</option>
                 <option>@DistanceConverter.MILES</option>
             </select>
         </p>
 
-        <input asp-for="@Model.Distance" type="text" 
-               placeholder="Enter your from distance" />
-
-        <input asp-for="@Model.App01.toDistance" type="text" 
-               readonly placeholder="To Distance"/>
+        <h4>Enter your from distance</h4>
+        <br/>
         <p>
-            <button type="submit">Calculate</button>
+            <input asp-for="App01.fromDistance" type="text"/>
         </p>
+
+        <h4>Select your to distance unit</h4>
+        <br/>
+        <p>
+            <select asp-for="App01.toUnit" 
+                asp-items="@Html.GetEnumSelectList<DistanceUnits>()">
+            </select>
+
+            <button class="btn btn-success" type="submit">Calculate</button>
+        </p>
+
+        <p class="lead  alert alert-primary">
+            @ViewData["Message"]
+        </p>
+
     </form>
 
 </section>
