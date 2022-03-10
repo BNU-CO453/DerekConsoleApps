@@ -17,8 +17,13 @@ namespace ConsoleAppProject.App01
         private double toDistance;
         private double fromDistance;
 
+<<<<<<< Updated upstream
         private String toUnit;
         private String fromUnit;
+=======
+        public DistanceUnits fromUnit; //{ get; set; }
+    public DistanceUnits toUnit; //{ get; set; }
+>>>>>>> Stashed changes
 
         public DistanceConverter()
         {
