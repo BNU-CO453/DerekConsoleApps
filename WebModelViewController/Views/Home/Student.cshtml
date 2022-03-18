@@ -1,0 +1,26 @@
+﻿@model ConsoleAppProject.App03.StudentGrades
+@using ConsoleAppProject.App03
+
+@{
+    ViewData["Title"] = "Student";
+}
+
+<h4>StudentGrades</h4>
+<h5>@ViewData["Title"]</h5>
+
+<form method="post">
+
+    <h3> Enter the mark for student</h3>
+    <input type="text" asp-for="@Model.studentMark1" value="" />
+
+    @if(Model.studentMark2 != 0)
+    {
+    <h3> Student mark has been changed to </h3>
+    <input type="text" asp-for="@Model.studentMark1" value="@Model.studentMark1" />
+    }
+
+    <p>
+        <button class="btn btn-success" type="submit">Save </button>
+    </p>
+</form>
+

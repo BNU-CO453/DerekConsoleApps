@@ -11,6 +11,24 @@ namespace ConsoleAppProject.App03
     /// </summary>
     public class StudentGrades
     {
+        public int studentMark1;
+        public int studentMark2;
+        public int[] Marks { get; set; }
+        public int MAX = 3;
+        public StudentGrades()
+        {
+            Marks = new int[MAX];
+            Marks[0] = 10;
+            Marks[1] = 70;
+            Marks[2] = 55;
+        }
+
+        public void updateArray()
+        {
+            Marks[0] = studentMark1;
+            studentMark2 = studentMark1 / 2;
+        }
+
         public void TestGradesEnumeration()
         {
             Grades grade = Grades.C;
