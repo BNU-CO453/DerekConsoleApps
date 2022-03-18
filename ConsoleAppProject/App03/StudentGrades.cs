@@ -11,28 +11,55 @@ namespace ConsoleAppProject.App03
     /// </summary>
     public class StudentGrades
     {
-        public void TestGradesEnumeration()
+        public const int MIN_FAIL = 0;
+        public const int MIN_D = 40;
+        public string [] Students { get; set; }
+
+        public int [] Marks { get; set; }
+
+
+        public void Run()
         {
-            Grades grade = Grades.C;
+            Students = new string [] { "Veena", "Gita", "Sue"};
+            Marks = new int[Students.Length];
 
-            Console.WriteLine($"Grade = {grade}");
-            Console.WriteLine($"Grade No = {(int)grade}");
+            ConsoleHelper.OutputHeading("App03 Student Marks");
 
-            Console.WriteLine("\nDiscovered by Andrei!\n");
-            var gradeName = grade.GetAttribute<DisplayAttribute>().Name;
-            Console.WriteLine($"Grade Name = {gradeName}");
-
-            var gradeDescription = grade.GetAttribute<DescriptionAttribute>().Description;
-            Console.WriteLine($"Grade Description = {gradeDescription}");
-
-            string testDescription = EnumHelper<Grades>.GetDescription(grade);
-            string testName = EnumHelper<Grades>.GetName(grade);
-
-            Console.WriteLine();
-            Console.WriteLine("Discovered by Derek Using EnumHelper\n");
-            Console.WriteLine($"Name = {testName}");
-            Console.WriteLine($"Description = {testDescription}");
-
+            InputMarks();
+            //ConvertToGrades();
+            OutputGrades();
         }
+
+        private void InputMarks()
+        {
+            Console.WriteLine("Please enter a mark for each student\n");
+            int index = 0;
+
+            foreach(string name in Students)
+            {
+                int mark = (int)ConsoleHelper.InputNumber($"{name} enter mark > ", 0, 100);
+                Marks[index] = mark;
+            }
+        }
+
+        private void OutputGrades()
+        {
+            for(int i = 0; i < Marks.Length; i++)
+            {
+                int mark = Marks[i];
+                Grades grade = ConvertToGrades(mark);
+                Console.WriteLine($"{Students[i]}  mark = {mark} Grade = {grade}" );
+            }
+        }
+
+        public Grades ConvertToGrades(int mark)
+        {
+            if (mark >= 0 && mark <= MIN_D - 1)
+                return Grades.F;
+            
+            else return Grades.X;
+        }
+
+
     }
 }
