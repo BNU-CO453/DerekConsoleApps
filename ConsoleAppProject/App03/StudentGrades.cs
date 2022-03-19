@@ -1,13 +1,12 @@
 ﻿using ConsoleAppProject.Helpers;
 using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 
 namespace ConsoleAppProject.App03
 {
     /// <summary>
-    /// At the moment this class just tests the
-    /// Grades enumeration names and descriptions
+    /// This class just asks the user to enter a mark
+    /// for each of the student names, and outputs
+    /// those marks and the associated grades.
     /// </summary>
     public class StudentGrades
     {
@@ -23,7 +22,6 @@ namespace ConsoleAppProject.App03
         public string [] Students { get; set; }
         // Student marks
         public int [] Marks { get; set; }
-
 
         public void Run()
         {
@@ -68,7 +66,5 @@ namespace ConsoleAppProject.App03
 
             else return Grades.X;
         }
-
-
     }
 }
