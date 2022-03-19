@@ -11,10 +11,17 @@ namespace ConsoleAppProject.App03
     /// </summary>
     public class StudentGrades
     {
-        public const int MIN_FAIL = 0;
-        public const int MIN_D = 40;
-        public string [] Students { get; set; }
+        public const int MINIMUM_MARK = 0;
+        public const int MAXIMUM_MARK = 100;
 
+        public const int MINIMUM_D = 40;
+        public const int MINIMUM_C = 50;
+        public const int MINIMUM_B = 60;
+        public const int MINIMUM_A = 40;
+        
+        // Student names
+        public string [] Students { get; set; }
+        // Student marks
         public int [] Marks { get; set; }
 
 
@@ -26,7 +33,6 @@ namespace ConsoleAppProject.App03
             ConsoleHelper.OutputHeading("App03 Student Marks");
 
             InputMarks();
-            //ConvertToGrades();
             OutputGrades();
         }
 
@@ -54,9 +60,12 @@ namespace ConsoleAppProject.App03
 
         public Grades ConvertToGrades(int mark)
         {
-            if (mark >= 0 && mark <= MIN_D - 1)
+            if (mark >= 0 && mark < MINIMUM_D)
                 return Grades.F;
             
+            else if (mark >= MINIMUM_D && mark < MINIMUM_C)
+                return Grades.D;
+
             else return Grades.X;
         }
 
