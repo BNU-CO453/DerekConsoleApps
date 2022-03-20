@@ -19,14 +19,16 @@ namespace ConsoleAppProject.App03
         public const int MINIMUM_A = 40;
         
         // Student names
-        public string [] Students { get; set; }
-        // Student marks
-        public int [] Marks { get; set; }
+        public Student [] Students { get; set; }
 
         public void Run()
         {
-            Students = new string [] { "Veena", "Gita", "Sue"};
-            Marks = new int[Students.Length];
+            Students = new Student [] 
+            { 
+                new Student {  Name = "Veena", Mark = 0},
+                new Student {  Name = "Gita",  Mark = 30},
+                new Student {  Name = "Divy",  Mark = 40}
+            };
 
             ConsoleHelper.OutputHeading("App03 Student Marks");
 
@@ -39,20 +41,21 @@ namespace ConsoleAppProject.App03
             Console.WriteLine("Please enter a mark for each student\n");
             int index = 0;
 
-            foreach(string name in Students)
+            foreach(Student student in Students)
             {
-                int mark = (int)ConsoleHelper.InputNumber($"{name} enter mark > ", 0, 100);
-                Marks[index] = mark;
+                int mark = (int)ConsoleHelper.InputNumber($"{student.Name} enter mark > ", 0, 100);
+                student.Mark = mark;
             }
         }
 
         private void OutputGrades()
         {
-            for(int i = 0; i < Marks.Length; i++)
+            foreach(Student student in Students)
             {
-                int mark = Marks[i];
-                Grades grade = ConvertToGrades(mark);
-                Console.WriteLine($"{Students[i]}  mark = {mark} Grade = {grade}" );
+                Grades grade = ConvertToGrades(student.Mark);
+                student.Grade = grade;
+
+                Console.WriteLine($"{student.Name}  mark = {student.Mark} Grade = {grade}" );
             }
         }
 
