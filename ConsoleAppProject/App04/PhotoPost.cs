@@ -13,7 +13,7 @@ namespace ConsoleAppProject.App04
     /// Michael Kölling and David J. Barnes
     /// @version 0.1
     /// </author>
-    public class PhotoPost
+    public class PhotoPost : Post
     {
         // the name of the image file
         public String Filename { get; set; }
@@ -33,7 +33,7 @@ namespace ConsoleAppProject.App04
         /// <param name="filename">
         /// The filename of the image in this post.
         /// </param>
-        public PhotoPost(String filename, String caption)
+        public PhotoPost(String author, String filename, String caption) : base(author)
         {
             this.Filename = filename;
             this.Caption = caption;

@@ -7,7 +7,7 @@ namespace ConsoleAppProject.App04
     public class Post
     {
         // username of the post's author
-        public String Username { get; set; }
+        public String Author { get; set; }
 
         public DateTime Timestamp { get; }
 
@@ -17,7 +17,7 @@ namespace ConsoleAppProject.App04
 
         public Post(String author)
         {
-            Username = author;
+            Author = author;
             Timestamp = DateTime.Now;
 
             likes = 0;
@@ -63,7 +63,7 @@ namespace ConsoleAppProject.App04
         public void Display()
         {
             Console.WriteLine();
-            Console.WriteLine($"    Author: {Username}");
+            Console.WriteLine($"    Author: {Author}");
             Console.WriteLine($"    Time Elpased: {FormatElapsedTime(Timestamp)}");
             Console.WriteLine();
 

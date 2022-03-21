@@ -12,7 +12,7 @@ namespace ConsoleAppProject.App04
     /// Michael Kölling and David J. Barnes
     /// version 0.1
     /// </author>
-    public class MessagePost
+    public class MessagePost : Post
     {
         // an arbitrarily long, multi-line message
         public String Message { get; }
@@ -26,12 +26,10 @@ namespace ConsoleAppProject.App04
         /// <param name="text">
         /// The text of this post.
         /// </param>
-        public MessagePost(String text)
+        public MessagePost(String text, string author) : base(author)
         {
             Message = text;
         }
-
-
 
     }
 }
