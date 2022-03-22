@@ -1,5 +1,6 @@
 ﻿using ConsoleAppProject.Helpers;
 using System;
+using System.Linq;
 
 namespace ConsoleAppProject.App03
 {
@@ -20,6 +21,12 @@ namespace ConsoleAppProject.App03
         
         // Student names
         public Student [] Students { get; set; }
+
+        public int [] Marks { get; set; }
+
+        public int Minimum;
+        public int Maximum;
+        public int Mean;
 
         public void Run()
         {
@@ -68,6 +75,13 @@ namespace ConsoleAppProject.App03
                 return Grades.D;
 
             else return Grades.X;
+        }
+
+        public void CalculateStatistics()
+        {
+            Minimum = (int)Marks.Min();
+            Maximum = (int)Marks.Max();
+            Mean = (int)Marks.Average();
         }
     }
 }
