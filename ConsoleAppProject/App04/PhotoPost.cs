@@ -15,7 +15,6 @@ namespace ConsoleAppProject.App04
     /// </author>
     public class PhotoPost : Post
     {
-
         // the name of the image file
         public String Filename { get; set; }
         

@@ -19,14 +19,27 @@ namespace ConsoleAppProject.App04
 
         public void Run()
         {
-            int choice = ConsoleHelper.SelectChoice(choices);
-
-            switch (choice)
+            Console.WriteLine("App04 News App");
+            Console.WriteLine("==============\n");
+            
+            bool quit = false;
+            while (quit == false)
             {
-                case 1: AddMessage();break;
-                case 2: AddPhoto(); break;
-                case 4: break;
+                int choice = ConsoleHelper.SelectChoice(choices);
+
+                switch (choice)
+                {
+                    case 1: AddMessage(); break;
+                    case 2: AddPhoto(); break;
+                    case 3: PrintPosts(); break;
+                    case 4: quit = true;  break; // quit
+                }
             }
+        }
+
+        private void PrintPosts()
+        {
+            NewsList.Display();
         }
 
         private void AddPhoto()
