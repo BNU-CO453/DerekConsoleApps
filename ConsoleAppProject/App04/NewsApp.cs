@@ -36,14 +36,20 @@ namespace ConsoleAppProject.App04
 
         private void AddMessage()
         {
-            Console.Write(" Please enter your name > ");
-            string name = Console.ReadLine();
+            string name = EnterAuthor();
 
             Console.Write(" Please enter your message > ");
             string message = Console.ReadLine();
 
             MessagePost post = new MessagePost(name, message);
             NewsList.AddPost(post);
+        }
+
+        private static string EnterAuthor()
+        {
+            Console.Write(" Please enter your name > ");
+            string name = Console.ReadLine();
+            return name;
         }
     }
 }
