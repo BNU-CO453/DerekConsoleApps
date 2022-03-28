@@ -1,6 +1,7 @@
 ﻿using ConsoleAppProject.App01;
 using ConsoleAppProject.App02;
 using ConsoleAppProject.App03;
+using ConsoleAppProject.App04;
 using ConsoleAppProject.Helpers;
 using System;
 
@@ -25,7 +26,7 @@ namespace ConsoleAppProject
             Console.WriteLine(" BNU CO453 Applications Programming 2020-2021!");
             Console.WriteLine("----------------------------------------------\n");
 
-            string[] choices = { "App01", "App02", "App03" };
+            string[] choices = { "App01", "App02", "App03", "App04" };
 
             int choice = ConsoleHelper.SelectChoice(choices);
 
@@ -39,6 +40,8 @@ namespace ConsoleAppProject
 
                 case 3: StudentGrades grades = new StudentGrades();
                     grades.Run();break;
+
+                case 4: NewsApp app04 = new NewsApp(); app04.Run();break;
             }
           
         }
